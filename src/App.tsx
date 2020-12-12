@@ -1,11 +1,19 @@
 import React, {FC} from 'react';
-import { Button } from 'antd';
+import { HashRouter } from 'react-router-dom';
+import Test from './pages/singerdetail/index'
 import './App.css';
 
 const App: FC = () => (
-  <div className="App">
-    <Button type="primary">Button</Button>
-  </div>
+  <HashRouter>
+
+
+    <div className="App">
+      <h1>ssssss</h1>
+    </div>
+
+    <Test></Test>
+
+  </HashRouter>
 );
 
 export default App;
