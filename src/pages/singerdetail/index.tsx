@@ -5,18 +5,13 @@ import apiObj from '../../api/config'
 interface singer {
   singerName?: string,
   singerDescription?: string
+  singerImg?: string
 }
 
-const test: FC = () => {
-  let params: singer = {
-    singerName: 'macklemore',
-    singerDescription: '关注社会现实'
-  }
-  apiObj.addSinger(params)
-  console.count('test is on')
+const singerDetail: FC = () => {
   return (
-    <div>test it</div>
+    <></>
   )
-}
+} 
 
-export default test
+export default singerDetail

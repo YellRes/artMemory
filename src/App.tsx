@@ -1,17 +1,18 @@
 import React, {FC} from 'react';
 import { HashRouter } from 'react-router-dom';
-import Test from './pages/singerdetail/index'
+
 import './App.css';
 
 const App: FC = () => (
   <HashRouter>
 
-
     <div className="App">
-      <h1>ssssss</h1>
+      <h1>more music, more than music</h1>
+      <div className="main_container">
+      
+      </div>
     </div>
-
-    <Test></Test>
+ 
 
   </HashRouter>
 );
