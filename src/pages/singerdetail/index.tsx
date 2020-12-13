@@ -1,6 +1,7 @@
 import './index.less';
-import React, {FC} from 'react';
+import React, {FC, useState, MouseEvent} from 'react';
 import apiObj from '../../api/config'
+import SingerModal from './components/singerModal/index'
 
 interface singer {
   singerName?: string,
@@ -8,10 +9,21 @@ interface singer {
   singerImg?: string
 }
 
-const singerDetail: FC = () => {
+const SingerDetail: FC = () => {
+
+  const [isShow = true, setIsShow ] = useState<boolean>(true)
+
+  function onCancel(e: MouseEvent<HTMLElement>) {
+    return setIsShow(false)
+  }
+
   return (
-    <></>
+    <>
+      <SingerModal 
+        isShow={isShow}
+        onCancel={onCancel}/>
+    </>
   )
 } 
 
-export default singerDetail
+export default SingerDetail
