@@ -7,6 +7,8 @@ message.config({
   top: 150
 })
 
+
+
 let hide: any
 
 const onRequestSuccess = (config: any) => {
@@ -20,6 +22,7 @@ const onRequestFail = (err: any) => {
   return Promise.reject(err)
 }
 
+// TODO: 添加http请求错误处理
 const onResponseSuccess = (res: any) => {
   hide()
   return res.data
