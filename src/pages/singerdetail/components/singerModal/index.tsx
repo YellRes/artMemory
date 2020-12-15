@@ -15,40 +15,26 @@ import apiObj from '../../../../api/config'
 
 interface singerModal {
   isShow: boolean,
+  singerName: string,
+  singerDescription: string,
+  singerImg: string,
+  onInputChange: (e: ChangeEvent<HTMLInputElement>, type: string) => void,
+  onConfirm: () => void,
   onCancel: (e: MouseEvent<HTMLElement>) => void
 }
 
 const SingerModal = (props: singerModal) => {
 
-  let [singerName = '', setName = () => {}] = useState('macklemore')
-  let [singerDescription = '', setDescription = () => {}] = useState('')
-  let [singerImg = '', setImg = () => {}] = useState('')
-
   const { 
     isShow = false, 
+    singerName = '', 
+    singerDescription = '',
+    singerImg = '',
+    onInputChange = () => {},
+    onConfirm = () => {},
     onCancel = () => {}
   } = props
 
-  function inputChange (e: ChangeEvent<HTMLInputElement>, type: string) {
-    if (type === 'singerName') {
-      setName(e.target.value)
-    } else if (type === 'singerDescription') {
-      setDescription(e.target.value)
-    }
-  }
-
-  function onConfirm () {
-    const params = {
-      singerName,
-      singerDescription
-    }
-    apiObj.addSinger(params)
-      .then(res => {
-
-      })
-
-
-  }
  
   return (
     <>
@@ -70,7 +56,7 @@ const SingerModal = (props: singerModal) => {
               <Input  
               placeholder="Basic usage"
               	value={singerDescription}
-                onChange={(e) => inputChange(e, 'singerName')}
+                onChange={(e) => onInputChange(e, 'singerName')}
                 allowClear={true}/>
           </Form.Item>
 
@@ -79,7 +65,7 @@ const SingerModal = (props: singerModal) => {
               name="singerDescription">
               <Input
                 value={singerName}
-                onChange={(e) => inputChange(e, 'singerDescription')}
+                onChange={(e) => onInputChange(e, 'singerDescription')}
                 allowClear={true}
               />
           </Form.Item>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {MouseEvent} from 'react';
 import { Space, Table } from 'antd'
 
 // 1-1. 姓名 singerName
@@ -8,37 +8,40 @@ import { Space, Table } from 'antd'
 // 2-1. 编辑 onModify
 // 2-2. 删除 onDelete
 
+interface singer {
+  singerName?: string,
+  singerDescription?: string
+  singerImg?: string
+}
 
-// 表格的配置
-const columns = [
-  {
-    title: '姓名',
-    dataIndex: 'singerName',
-    key: 'singerName'
-  },
-  {
-    title: '描述',
-    dataIndex: 'singerDescription',
-    key: 'singerDescription'
-  },
-  {
-    title: '操作',
-    key: 'operation',
-    render: () => (
-      <Space size="middle">
-        <a>查看</a>
-        <a>删除</a>
-      </Space>
-    )
-  }
-]
+interface tableProps {
+  singerArr: Array<singer>,
+  onDelete: (e: MouseEvent<HTMLElement>, colObj: Object) => void
+}
 
+const singerTable = (props: tableProps) => {
 
-const singerTable = (props: any) => {
-
-  const { singerArr } = props
+  const { 
+    singerArr = [],
+    onDelete = () => {}
+  } = props
+  const { Column } = Table
   return (
-    <Table columns={columns} dataSource={singerArr} />
+    <Table dataSource={singerArr} >
+
+      <Column title="姓名" dataIndex="singerName" key="singerName"/>
+      <Column title="描述" dataIndex="singerDescription" key="singerDescription"/>
+      <Column
+        title="Action"
+        key="action"
+        render={(text, record: any) => (
+          <Space size="middle">
+            <a>查看</a>
+            <a onClick={(e) => onDelete(e, record)}>删除</a>
+          </Space>
+        )}
+      />
+    </Table>
   )
 }
 

@@ -7,6 +7,10 @@ const apiObj = {
 
   getSinger: (params: any = {}) => {
     return axios.post('/singer/getSinger', params)
+  },
+
+  deleteSinger: (params: any = {}) => {
+    return axios.post('/singer/deleteSinger', params)
   }
 }
 
