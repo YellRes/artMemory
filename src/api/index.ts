@@ -12,7 +12,9 @@ message.config({
 let hide: any
 
 const onRequestSuccess = (config: any) => {
-  hide = message.loading('加载中')
+  if (!hide) {
+    hide = message.loading('加载中')
+  } 
   if (config.params) config.params._t = Date.now()
   return config
 }
