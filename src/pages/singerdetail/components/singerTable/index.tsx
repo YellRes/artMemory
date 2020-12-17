@@ -16,14 +16,16 @@ interface singer {
 
 interface tableProps {
   singerArr: Array<singer>,
-  onDelete: (e: MouseEvent<HTMLElement>, colObj: Object) => void
+  onDelete: (e: MouseEvent<HTMLElement>, colObj: Object) => void,
+  onModify: (e: MouseEvent<HTMLElement>, colObj: Object) => void,
 }
 
 const singerTable = (props: tableProps) => {
 
   const { 
     singerArr = [],
-    onDelete = () => {}
+    onDelete = () => {},
+    onModify = () => {}
   } = props
   const { Column } = Table
   return (
@@ -36,7 +38,7 @@ const singerTable = (props: tableProps) => {
         key="action"
         render={(text, record: any) => (
           <Space size="middle">
-            <a>查看</a>
+            <a onClick={(e) => onModify(e, record)}>查看</a>
             <a onClick={(e) => onDelete(e, record)}>删除</a>
           </Space>
         )}

@@ -86,6 +86,16 @@ const SingerDetail: FC = () => {
   
   }
 
+  async function onModify(e: MouseEvent<HTMLElement>, colObj: singer) {
+    const { _id } = colObj
+    let result: any = await apiObj.getSinger({singerId: _id}) 
+    
+    const {singerName, singerDescription} = result.body.data[0]
+    setName(singerName)
+    setDescription(singerDescription)
+    setIsShow(true)
+  }
+
   useEffect(() => {
     getSinger()
   }, [])
@@ -106,6 +116,7 @@ const SingerDetail: FC = () => {
         onCancel={onCancel}/>
       <SingerTable
         singerArr={singerArr}
+        onModify={onModify}
         onDelete={onDelete} 
         />
     </>

@@ -55,7 +55,7 @@ const SingerModal = (props: singerModal) => {
               rules={[{required: true, message: '请输入姓名'}]}>
               <Input  
               placeholder="Basic usage"
-              	value={singerDescription}
+              	value={singerName}
                 onChange={(e) => onInputChange(e, 'singerName')}
                 allowClear={true}/>
           </Form.Item>
@@ -64,7 +64,7 @@ const SingerModal = (props: singerModal) => {
               label="singerDescription"
               name="singerDescription">
               <Input
-                value={singerName}
+                value={ singerDescription}
                 onChange={(e) => onInputChange(e, 'singerDescription')}
                 allowClear={true}
               />
