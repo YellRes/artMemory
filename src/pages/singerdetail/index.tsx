@@ -25,6 +25,7 @@ const SingerDetail: FC = () => {
   const [singerName = '', setName = () => {}] = useState('')
   const [singerDescription = '', setDescription = () => {}] = useState('')
   const [singerImg = '', setImg = () => {}] = useState('')
+  const [singerId = '', setSingerId = () => {}] = useState('')
 
   // 获取singer数据
   function getSinger(singerName: string = '') {
@@ -48,24 +49,26 @@ const SingerDetail: FC = () => {
     }
   }
 
-  async function onConfirm () {
-    const params = {
-      singerName,
-      singerDescription
-    }
-    let res = await apiObj.addSinger(params)
-    let data: any = await apiObj.getSinger()    
-    setSingerArr(data.body.data)
-    
-    setIsShow(false)
-  }
-
   function onCancel(e: MouseEvent<HTMLElement>) {
     return setIsShow(false)
   }
 
   function onAdd(e: MouseEvent<HTMLElement>) {
     return setIsShow(true)
+  }
+
+  // 确认操作
+  async function onConfirm () {
+    const params = {
+      singerName,
+      singerDescription,
+      singerId
+    }
+    let res = await apiObj.addSinger(params)
+    let data: any = await apiObj.getSinger()    
+
+    setSingerArr(data.body.data)
+    setIsShow(false)
   }
 
   async function onDelete(e: MouseEvent<HTMLElement>, colObj: singer) {
@@ -86,13 +89,15 @@ const SingerDetail: FC = () => {
   
   }
 
-  async function onModify(e: MouseEvent<HTMLElement>, colObj: singer) {
+  async function onModify(e: MouseEvent<HTMLElement>, colObj: any) {
     const { _id } = colObj
     let result: any = await apiObj.getSinger({singerId: _id}) 
     
     const {singerName, singerDescription} = result.body.data[0]
+    
     setName(singerName)
     setDescription(singerDescription)
+    setSingerId(_id)
     setIsShow(true)
   }
 

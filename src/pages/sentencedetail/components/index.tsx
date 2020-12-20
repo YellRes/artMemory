@@ -1,5 +1,5 @@
 import React, {FC} from 'react'
-import SentenceForm from '../component/sentenceForm/index'
+// import SentenceForm from './sentenceForm/index'
 import './index.less'
 
 
@@ -7,7 +7,7 @@ import './index.less'
 const sentenceDetail: FC = () => {
     return (
         <>
-            <SentenceForm/>
+            {/* <SentenceForm/> */}
         </>
     )
 }

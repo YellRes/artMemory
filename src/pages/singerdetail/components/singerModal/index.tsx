@@ -45,16 +45,14 @@ const SingerModal = (props: singerModal) => {
         onOk={onConfirm}
         onCancel={onCancel}
       >
-        {singerName}
-        {singerDescription}
-        {singerImg}
         <Form>
           <Form.Item
               label="singerName"
               name="singerName"
               rules={[{required: true, message: '请输入姓名'}]}>
+                <p style={{"display": "none"}}>{singerName}</p>
               <Input  
-              placeholder="Basic usage"
+                placeholder="请输入歌手姓名"
               	value={singerName}
                 onChange={(e) => onInputChange(e, 'singerName')}
                 allowClear={true}/>
@@ -63,8 +61,9 @@ const SingerModal = (props: singerModal) => {
           <Form.Item
               label="singerDescription"
               name="singerDescription">
+                <p style={{"display": "none"}}>{singerDescription}</p>
               <Input
-                value={ singerDescription}
+                value={singerDescription}
                 onChange={(e) => onInputChange(e, 'singerDescription')}
                 allowClear={true}
               />

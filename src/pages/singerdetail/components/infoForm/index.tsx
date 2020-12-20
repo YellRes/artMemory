@@ -8,42 +8,29 @@ import { UploadOutlined } from '@ant-design/icons';
 // singerImg
 
 interface singerForm {
+    singerName: String,
+    singerDescription: String,
+    singerImg: string,
     onConfirm?: Function,
     onCancel?: Function
 }
 
-const InfoForm = (porps: singerForm) => {
-    let [singerName = '', setName = () => {}] = useState(0)
-    let [singerDescription = '', setDescription = () => {}] = useState(1)
-    let [singerImg = '', setImg = () => {}] = useState(2)
+const InfoForm = (props: singerForm) => {
 
     const {
+        singerName = '', 
+        singerDescription = '',
+        singerImg = '',
         onConfirm = () => {},
-        onCancel = () => {}
-    } = porps
+        onCancel = () => {},
+    } = props
+
+
+
 
     return (
         <>
-            <Form>
-                <Form.Item
-                    label="singerName"
-                    name="singerName"
-                    rules={[{required: true, message: '请输入姓名'}]}>
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
-                    label="singerDescription"
-                    name="singerDescription">
-                    <Input/>
-                </Form.Item>
-
-                <Form.Item>
-                    <Upload name="logo" action="/upload.do" listType="picture">
-                        <Button icon={<UploadOutlined />}>点击上传</Button>
-                    </Upload>
-                </Form.Item>
-            </Form>
+   
         </>
     )
     
