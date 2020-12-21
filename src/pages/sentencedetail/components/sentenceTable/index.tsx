@@ -1,3 +1,8 @@
+import React, {FC} from 'react';
 import './index.less'
 
-export default {}
+const SentenceTable = () => {
+  
+}
+
+export default SentenceTable
