@@ -1,6 +1,6 @@
 import React, {FC, ChangeEvent} from 'react';
 import {Form, Input, Modal, Select} from 'antd'
-import {Sentence} from '../type'
+import {Sentence, Singer} from '../type'
 import './index.less'
 
 type OptionType = {
